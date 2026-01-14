@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Casa Silvana – Raumplan-Archiv</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #eaf4fb, #ffffff);
+    font-family: 'Playfair Display', serif;
+    color: #2c4f66;
+}
+
+#container {
+    max-width: 700px;
+    margin: 80px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 2px solid #cfe7f5;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #b7d7ea;
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #8fc6e8;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #6fb4dd;
+}
+
+#error {
+    color: #c33;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#raumplaene {
+    display: none;
+    margin-top: 30px;
+}
+
+.plan-btn {
+    margin-top: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+<h1>Hotel Casa Silvana<br>Raumplan-Archiv</h1>
+
+<div id="login">
+    <input type="password" id="passwort" placeholder="Zugriffspasswort">
+    <button onclick="login()">Zugang öffnen</button>
+    <div id="error"></div>
+</div>
+
+<div id="raumplaene">
+    <button class="plan-btn" onclick="oeffnePlan('erdgeschoss.pdf')">Erdgeschoss</button>
+    <button class="plan-btn" onclick="oeffnePlan('1_stock.pdf')">1. Stock</button>
+    <button class="plan-btn" onclick="oeffnePlan('2_stock.pdf')">2. Stock</button>
+</div>
+
+</div>
+
+<script>
+const richtigesPasswort = "hotelzugang"; // HIER PASSWORT ÄNDERN
+
+function login() {
+    const eingabe = document.getElementById("passwort").value;
+
+    if (eingabe === richtigesPasswort) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("raumplaene").style.display = "block";
+    } else {
+        document.getElementById("error").innerText = "❌ Falsches Passwort";
+    }
+}
+
+function oeffnePlan(datei) {
+    alert("Raumplan wird später hier geöffnet:\n" + datei);
+}
+</script>
+
+</body>
+</html>
