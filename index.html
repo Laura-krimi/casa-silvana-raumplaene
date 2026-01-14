@@ -16,8 +16,8 @@ body {
 }
 
 #container {
-    max-width: 700px;
-    margin: 80px auto;
+    max-width: 900px;
+    margin: 60px auto;
     background: #ffffff;
     border-radius: 16px;
     padding: 40px;
@@ -27,6 +27,13 @@ body {
 
 h1 {
     text-align: center;
+    margin-bottom: 10px;
+}
+
+.hinweis {
+    text-align: center;
+    font-style: italic;
+    color: #4b7a99;
     margin-bottom: 30px;
 }
 
@@ -64,11 +71,26 @@ button:hover {
 
 #raumplaene {
     display: none;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
-.plan-btn {
-    margin-top: 12px;
+.plan-block {
+    margin-bottom: 40px;
+}
+
+.plan-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #cfe7f5;
+    padding-bottom: 5px;
+}
+
+iframe {
+    width: 100%;
+    height: 500px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 </style>
 </head>
@@ -85,15 +107,30 @@ button:hover {
 </div>
 
 <div id="raumplaene">
-    <button class="plan-btn" onclick="oeffnePlan('erdgeschoss.pdf')">Erdgeschoss</button>
-    <button class="plan-btn" onclick="oeffnePlan('1_stock.pdf')">1. Stock</button>
-    <button class="plan-btn" onclick="oeffnePlan('2_stock.pdf')">2. Stock</button>
+    <div class="hinweis">
+        Bitte wartet, bis der Plan komplett geladen hat, zu sehen an dem blauen Balken!
+    </div>
+
+    <div class="plan-block">
+        <div class="plan-title">Erdgeschoss</div>
+        <iframe src="https://floorplanner.com/360vr/145847482-1766347735"></iframe>
+    </div>
+
+    <div class="plan-block">
+        <div class="plan-title">1. Stock</div>
+        <iframe src="https://floorplanner.com/360vr/145841353-1766335633"></iframe>
+    </div>
+
+    <div class="plan-block">
+        <div class="plan-title">2. Stock</div>
+        <iframe src="https://floorplanner.com/360vr/145440400-1765724893"></iframe>
+    </div>
 </div>
 
 </div>
 
 <script>
-const richtigesPasswort = "hotelzugang"; // HIER PASSWORT ÄNDERN
+const richtigesPasswort = "hotelzugang"; // HIER DEIN PASSWORT
 
 function login() {
     const eingabe = document.getElementById("passwort").value;
@@ -104,10 +141,6 @@ function login() {
     } else {
         document.getElementById("error").innerText = "❌ Falsches Passwort";
     }
-}
-
-function oeffnePlan(datei) {
-    alert("Raumplan wird später hier geöffnet:\n" + datei);
 }
 </script>
 
